@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/main.css" >
+    <link rel="stylesheet" href="/bootstrap-5.2.0-dist/css/bootstrap.min.css">
+    <link rel="icon" href="/bootstrap-5.2.0-dist/img/AF.png" type="image/png">
+    <title>Регистрация</title>
+</head>
+<body>
+  <div class="wrapper">
+    <%- include ('./components/header.ejs')%>
+      <div class="main">
+        <div class="container">
+          <div class="col-md-6">
+            <label for="formGroupExampleInput" class="form-label">Придумайте имя </label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" width="300pxs">
+          </div>
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Придумайте пароль</label>
+            <input type="password" class="form-control" id="inputPassword4" placeholder="">
+          </div>
+          <div class="row my-3">
+            <div class="col-md-6">
+              <button type="button" class="btn btn-dark">Зарегистрироваться</button>
+            </div>
+          </div>
+          <div class="row mx-8" role="alert">
+            <div class="col-md-6">
+              <div class="alert alert-danger" role="alert">
+                Выбранное имя уже занято!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%- include ('./components/footer.ejs')%>
+  </div>
+  <script src="/bootstrap-5.2.0-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
