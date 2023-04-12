@@ -34,7 +34,6 @@ h2{
 
 .card{
     margin-bottom: 20px;
-    max-height: 250px;
 }
 
 .header-title{
@@ -53,3 +52,19 @@ textarea{
     max-height: 100px;
     max-width: 1000px;
 }
+
+.notification {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f44336;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .usernameHead{
+    color: white;
+    margin: 0px;
+  }
