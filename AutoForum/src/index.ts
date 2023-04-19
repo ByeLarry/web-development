@@ -12,30 +12,36 @@ import authRouter from "./modules/routers/authRouter";
 import threadRouter from "./modules/routers/threadRouter";
 import messageRouter from "./modules/routers/messageRouter";
 import  readFile  from "./modules/readFile";
+import jwt, { JwtPayload } from "jsonwebtoken";
+import DecodingUsername from "./modules/decoding";
 
 const server = http.createServer((request, response) => {
   const urlRequest = url.parse(request.url!, true);
   const pathName = urlRequest.pathname?.split("/");
+
+  const decodedUsername: string = DecodingUsername(request);
+ 
+
   if (pathName){
     if (pathName[1] == "api"){
       switch (pathName[2]) {
         case "auth":{
-          authRouter(request, response, pathName[3]);
+          authRouter(request, response, pathName[3], decodedUsername);
           break;
         }
         case "thread":{
-          threadRouter(request, response, pathName[3]);
+          threadRouter(request, response, pathName[3], decodedUsername);
           break;
         }
         case "message":{
-          messageRouter(request, response, pathName[3]);
+          messageRouter(request, response, pathName[3], decodedUsername);
           break;
         }
       
       }
     }
     else{
-      pageRouter(request, response, pathName[1]);
+      pageRouter(request, response, pathName[1], decodedUsername);
     }
   }
  
@@ -43,5 +49,5 @@ const server = http.createServer((request, response) => {
   readFile(request, response, filePath);
 });
 
-server.listen(3000, () => console.log("Server running on port 3000"));
+server.listen(3000);
 

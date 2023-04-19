@@ -8,6 +8,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
+          <% if (username == undefined){ %>
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="vhod" >Вход</a>
@@ -15,12 +16,10 @@
             <li>
               <a class="nav-link active" aria-current="page" href="reg">Регистрация</a>
             </li>
-            <li class="nav-item ml-auto">
-              
-            </li>
           </ul>
+          <% } %>
         </div>
-        <h6 class="usernameHead"  id="loggedUserId" >Имя пользователя</h6> 
+        <a class="nav-link active" aria-current="page" style="color: white" id="loggedUserId" href="user" ><%= username %></a> 
       </div>
     </nav> 
 </header>

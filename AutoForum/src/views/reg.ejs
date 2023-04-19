@@ -14,12 +14,8 @@
       <div class="main">
         <div class="container">
           <div class="col-md-6">
-            <label for="formGroupExampleInput" class="form-label">Придумайте имя </label>
-            <input autocomplete="off" type="text" class="form-control" id="username" placeholder="" width="300pxs">
-          </div>
-          <div class="col-md-6">
-            <label for="inputPassword4" class="form-label">Придумайте пароль</label>
-            <input type="password" class="form-control" id="userPassword" placeholder="">
+            <input autocomplete="off" type="text" class="form-control" id="username" placeholder="Имя" width="300pxs"><br>
+            <input type="password" class="form-control" id="userPassword" placeholder="Пароль">
           </div>
           <div class="row my-3">
             <div class="col-md-6">
@@ -31,6 +27,6 @@
     <%- include ('./components/footer.ejs')%>
   </div>
   <script src="/bootstrap-5.2.0-dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../scripts/app.js"></script>
+  <script type="module" src="../scripts/registration.js"></script>
 </body>
 </html>

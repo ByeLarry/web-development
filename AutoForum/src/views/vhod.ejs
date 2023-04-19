@@ -14,22 +14,17 @@
     <div class="main">
       <div class="container">
         <div class="col-md-6">
-          <label for="formGroupExampleInput" class="form-label">Имя пользователя</label>
-          <input type="text" class="form-control" id="loginUsername" placeholder="">
-        </div>
-        <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">Пароль</label>
-          <input type="password" class="form-control" id="loginPassword" placeholder="">
+          <input type="text" class="form-control" id="loginUsername" placeholder="Имя"><br>
+          <input type="password" class="form-control" id="loginPassword" placeholder="Пароль">
         </div> 
         <div class="container my-3">
           <button class="btn btn-dark" id="loginButton">Вход</button>
         </div>
-        
       </div>
     </div>
   <%- include ('./components/footer.ejs')%>
   </div>    
 <script src="/bootstrap-5.2.0-dist/js/bootstrap.bundle.min.js"></script>
-<script src="../scripts/app.js"></script>
+<script type="module" src="../scripts/login.js"></script>
 </body>
 </html>

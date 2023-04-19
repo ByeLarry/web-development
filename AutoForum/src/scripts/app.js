@@ -1,4 +1,6 @@
-const errorMessage = (error) => {
+import { errorMessage } from './modules/notification.js';
+
+/* const errorMessage = (error) => {
     const notification = document.querySelector('.notification');
     if (notification) {
         notification.remove();
@@ -10,8 +12,7 @@ const errorMessage = (error) => {
     newNotification.addEventListener('click', function() {
         newNotification.style.display = 'none';
     });
-}
-
+} */
 
 const input = document.querySelector('input[type="password"]');
 if (input){
@@ -52,12 +53,13 @@ const threadInput = document.querySelector('#thread-input');
 const createThreadButton = document.querySelector('#create-thread-button');
 if (threadInput && createThreadButton){
     createThreadButton.addEventListener('click', async (event) =>{
-        let usernameString = threadInput.value.trim();
-        if (usernameString  && usernameString.length <= 50 ){
-            console.log(usernameString);
+        let newThread = threadInput.value.trim();
+        if (newThread  && newThread.length <= 50 ){
+            threadInput.value = '';
+            console.log(newThread);
             event.preventDefault(); 
             /* const thread = {
-                threadTitle: usernameString
+                threadTitle: newThread
             }
             await fetch(`api/thread/create`, {
                 method: 'POST',
@@ -81,8 +83,11 @@ const registratoinButton = document.querySelector('#registrationButton');
 if (username && password && registratoinButton){
     registratoinButton.addEventListener('click', async (event) =>{
     let usernameString = username.value.trim();
-    console.log(usernameString, password.value);
-    if (usernameString && password.value && usernameString.length <= 50 && password.value.length <= 60 ){
+    let passwordString = password.value.trim();
+    console.log(usernameString, passwordString);
+    if (usernameString && passwordString && usernameString.length <= 50 && passwordString.length <= 60 ){
+        username.value = '';
+        password.value = '';
         const usernameHeader = document.querySelector('#loggedUserId');
         usernameHeader.textContent = usernameString;
         await fetch(`api/auth/registration`, {
@@ -92,9 +97,9 @@ if (username && password && registratoinButton){
             },
             body: JSON.stringify({
                 username: usernameString,
-                password: password.value
+                password: passwordString
             }) 
-        })  
+        }) 
     } else{
         errorMessage('Ошибка валидации! Пожалуйста, проверьте правильность заполнения полей.')
         event.preventDefault();
@@ -107,24 +112,29 @@ const loginUsername = document.querySelector('#loginUsername');
 const loginPassword = document.querySelector('#loginPassword');
 const loginButton = document.querySelector('#loginButton');
 if (loginUsername && loginPassword && loginButton){
-    let usernameString = loginUsername.value.trim();
-    console.log(usernameString, loginPassword.value);
     loginButton.addEventListener('click', async (event) =>{
-    if (usernameString && loginPassword.value && usernameString.length <= 50 && loginPassword.value.length <= 60 ){
+    let loginUsernameString = loginUsername.value.trim();
+    let loginPasswordString = loginPassword.value.trim();
+    console.log(loginUsernameString, loginPasswordString);
+    if (loginUsernameString && loginPasswordString && loginUsernameString <= 50 && loginPasswordString.length <= 60 ){
+        const usernameHeader = document.querySelector('#loggedUserId');
+        usernameHeader.textContent = loginUsernameString;
+        loginUsername.value = '';
+        loginPassword.value = ''; 
         await fetch(`api/auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
             },
             body: JSON.stringify({
-                username: usernameString,
-                password: loginPassword.value
+                username: loginUsernameString,
+                password: loginPasswordString
             }) 
-        }) 
+        })
     } else{
         errorMessage('Ошибка валидации! Пожалуйста, проверьте правильность заполнения полей.')
         event.preventDefault();
-        }
+    }
     })
 }
 

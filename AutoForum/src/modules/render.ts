@@ -6,8 +6,8 @@ import ejs from "ejs";
 
 
 
-const renderPage = (response: http.ServerResponse, page: string, SQLdata?: any) => {
-  const modData = { SQLdata };
+const renderPage = (response: http.ServerResponse, page: string, SQLdata?: any, username?: any) => {
+  const modData = { SQLdata, username };
   const pagePath: string = path.join(__dirname,  "../views/", page);
   ejs.renderFile(pagePath, modData, (err, data) => { 
         if (err) {
@@ -18,6 +18,9 @@ const renderPage = (response: http.ServerResponse, page: string, SQLdata?: any) 
           console.log(`Error 404 ${pagePath} not found`);
           response.end();
         } else {
+          // if (token){
+          //   response.writeHead(200, { "Content-Type": `{token}` });
+          // }
           response.writeHead(200, { "Content-Type": "text/html" });
           response.write(data);
           response.end();

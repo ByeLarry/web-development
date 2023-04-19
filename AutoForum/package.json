@@ -10,7 +10,9 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/cookie": "^0.5.1",
     "@types/ejs": "^3.1.2",
+    "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "^18.15.11",
     "@types/pg": "^8.6.6",
     "ejs": "^3.1.9",
@@ -19,7 +21,12 @@
     "typescript": "^5.0.3"
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cookie": "^0.5.0",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^16.0.3",
     "http": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.0",
     "pg": "^8.10.0",
     "querystring": "^0.2.1"
   }

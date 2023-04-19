@@ -1,0 +1,14 @@
+<% SQLdata.messages.forEach(({title}) => { %>
+    <div class="card">
+        <div class="card-header" style="display: flex; justify-content: space-between;">
+            <h6> <%= name %> </h6>
+            <% const formattedDate = new Date(date).toLocaleString('ru-RU', { year: 'numeric', month: '2-digit', 
+            day: '2-digit', hour: '2-digit', minute: '2-digit'}); %>
+            <p > <%= formattedDate %> </p>
+        </div>
+        <div class="card-body">
+            <p> <%= content %> </p>
+        </div>
+    </div>
+    <% }) %>
+    
