@@ -23,32 +23,29 @@
                 <h2>Список тем</h2>
               </div>
               <div class="card-body">
-                <ul class="list-group">
-                <% SQLdata.forEach(({id, title}) => { %> 
-                  <li class="list-group-item"><a href="thread?id=<%= id %>"> <%= title %> </a></li>  
-                <% }) %>
+                <ul class="list-group" id="threadList">
+                <%- include('./components/threadList.ejs') %>
                 </ul>
               </div>
             </div>
           </div>
 
           <% if (username != undefined){ %>
-            <div class="col-md-4">
+          <div class="col-md-4">
             <div class="card">
               <div class="card-header">
                 <h2>Создать новую тему</h2>
+                <p></p>
               </div>
               <div class="card-body d-grid gap-3">
-                <form class="d-grid gap-3">
-                  <div class="form-group d-grid gap-3">
-                    <input autocomplete="off" type="text" class="form-control" id="thread-input", placeholder="Название темы:">
-                  </div>
-                  <button class="btn btn-primary" id="create-thread-button">Создать</button>
-                </form>
+                <div class="form-group d-grid gap-3">
+                  <input autocomplete="off" type="text" class="form-control" id="thread-input", placeholder="Название темы:">
+                </div>
+                <button class="btn btn-primary" id="create-thread-button">Создать</button>
               </div>
             </div>
           </div>
-            <% } %>
+          <% } %>
         </div>
       </div>
     </div>

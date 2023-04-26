@@ -7,6 +7,10 @@ const threadRouter = (request: http.IncomingMessage, response: http.ServerRespon
             threadController.create(request, response, username);
             break;
         }
+        case "get":{
+            threadController.getAll(request, response, username);
+            break;
+        }
     }
 }
 

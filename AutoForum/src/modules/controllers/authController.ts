@@ -13,7 +13,9 @@ const registration = (request: http.IncomingMessage, response: http.ServerRespon
           .then(data => {
             if (Boolean(data[0]['exists']) === false) {
               sendSQLRequest(`insert into users (name, password) values('${username}', '${password}')`).then(() => {
-                const token = jwt.sign({username}, "AAABBB", {expiresIn: "1d"});
+                const secret  = process.env.SECRET || "secret";
+                const token = jwt.sign({username}, secret, {expiresIn: "1d"});
+                console.log(secret)
                 response.setHeader("Set-Cookie", cookie.serialize("token", token, {
                   httpOnly: true,
                   maxAge: 24 * 60 * 60,
@@ -25,7 +27,7 @@ const registration = (request: http.IncomingMessage, response: http.ServerRespon
               });
             }
             else{
-              response.writeHead(200, {'Content-Type': 'application/json;charset=utf-8'});
+              response.writeHead(400, {'Content-Type': 'application/json;charset=utf-8'});
               response.end(JSON.stringify({isAuthorized: false}));
             };
           });
@@ -41,7 +43,8 @@ const login = (request: http.IncomingMessage, response: http.ServerResponse, use
       sendSQLRequest(`SELECT EXISTS(SELECT id FROM users WHERE name = '${username}' AND password = '${password}')`)
       .then(data => {
         if (Boolean(data[0]['exists']) === true) {
-          const token = jwt.sign({username}, "AAABBB", {expiresIn: "1d"});
+          const secret  = process.env.SECRET || "secret";
+          const token = jwt.sign({username}, secret, {expiresIn: "1d"});
           response.setHeader("Set-Cookie", cookie.serialize("token", token, {
             httpOnly: true,
             maxAge: 24 * 60 * 60,

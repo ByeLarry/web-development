@@ -1,11 +1,14 @@
 import { Pool } from "pg";
+import * as dotenv from "dotenv";
+dotenv.config();
+
 
 const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "forum_db",
-  password: "1",
-  port: 5432
+  user: process.env.USER,
+  host: process.env.HOST,
+  database: process.env.DB,
+  password: process.env.PASSWORD,
+  port: Number(process.env.PORT) 
 });
 
 const sendSQLRequest = async (SQLquery: string): Promise<any[]> => {

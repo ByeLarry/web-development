@@ -8,6 +8,10 @@ const messageRouter = (request: http.IncomingMessage, response: http.ServerRespo
             messageController.getAll(request, response, username);
             break;
         }
+        case "newMsg":{
+            messageController.newMsg(request, response, username);
+            break;
+        }
     }
 }
 

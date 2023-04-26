@@ -1,8 +1,8 @@
 import http from "http";
-import fs from "fs";
 import path from "path";
 import url from "url";
 import { Pool } from "pg";
+
 import renderPage from "./modules/render";
 import getContentType from "./modules/contentType";
 import sendSQLRequest from "./modules/forDB";
@@ -14,13 +14,16 @@ import messageRouter from "./modules/routers/messageRouter";
 import  readFile  from "./modules/readFile";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import DecodingUsername from "./modules/decoding";
+import userRouter from "./modules/routers/userRouter";
+import * as dotenv from "dotenv";
+dotenv.config(); 
+
 
 const server = http.createServer((request, response) => {
   const urlRequest = url.parse(request.url!, true);
   const pathName = urlRequest.pathname?.split("/");
 
   const decodedUsername: string = DecodingUsername(request);
- 
 
   if (pathName){
     if (pathName[1] == "api"){
@@ -37,6 +40,10 @@ const server = http.createServer((request, response) => {
           messageRouter(request, response, pathName[3], decodedUsername);
           break;
         }
+        case "user":{
+          userRouter(request, response, pathName[3], decodedUsername);
+          break;
+        }
       
       }
     }
@@ -49,5 +56,5 @@ const server = http.createServer((request, response) => {
   readFile(request, response, filePath);
 });
 
-server.listen(3000);
+server.listen(Number(process.env.SERVER_PORT));
 

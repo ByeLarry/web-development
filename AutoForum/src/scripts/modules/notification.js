@@ -1,7 +1,10 @@
 export const message = (msg, classType) => {
     const notification = document.querySelector('.' + classType);
-    if (notification) {
-        notification.remove();
+    if (document.querySelector('.notification')) {
+        document.querySelector('.notification').remove();
+    }
+    if (document.querySelector('.success')) {
+        document.querySelector('.success').remove();
     }
     const newNotification = document.createElement('div');
     newNotification.textContent = msg;
@@ -10,4 +13,7 @@ export const message = (msg, classType) => {
     newNotification.addEventListener('click', function() {
         newNotification.style.display = 'none';
     });
+    setTimeout(function() {
+        newNotification.style.display = 'none';
+    }, 3000);
 }

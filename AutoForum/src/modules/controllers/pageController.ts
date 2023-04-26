@@ -5,9 +5,9 @@ import { Pool } from "pg";
 import url from "url";
 
 const home = (request: http.IncomingMessage, response: http.ServerResponse, username: string) => {
-    sendSQLRequest("SELECT * FROM threads")
-      .then(data => {
-        renderPage(response, "index.ejs", data, username);
+    sendSQLRequest("SELECT * FROM threads ORDER BY id limit 20")
+      .then(threadList => {
+        renderPage(response, "index.ejs", {threadList}, username);
       })
 }
 

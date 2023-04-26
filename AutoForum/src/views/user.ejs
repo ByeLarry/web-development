@@ -10,38 +10,53 @@
 </head>
 <body>
   <div class="wrapper">
-    <%- include ('./components/header.ejs')%><br>
+    <%- include ('./components/header.ejs')%>
     <div class="main">
-      <div class="header-title">
+      <div class="header-title" style="margin-bottom: 20px">
         <h2> Личный кабинет </h2>
-      </div><br>
+      </div>
       <% if(username != undefined){ %>
       <div class="col-md-7 mx-auto  ">
         <div class="card">
             <div class="card-header">
-                <h6>Изменить пароль</h6>
+              <h6>Изменить пароль</h6>
             </div>
             <div class="card-body">
-                <input type="text" class="form-control" placeholder="Старый пароль" ><br>
-                <input type="password" class="form-control" placeholder="Новый пароль" >
+              <input autocomplete="off" type="text" class="form-control" placeholder="Старый пароль" id="oldPassword" style="margin-bottom: 20px">
+              <input type="password" class="form-control" placeholder="Новый пароль" id="newPassword" style="margin-bottom: 20px">
+              <button class="btn btn-danger" id="changePassword" >Изменить</button>
             </div>
         </div>
-        <div class="col-md-5">
-          <div class="row">
-            <div class="col">
-              <button class="btn btn-danger">Удалить аккаунт</button>
+        <div class="col-md-3">
+          <div style="margin-bottom: 20px">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Удалить аккаунт</button>
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Вы точно хотите удалить аккаунт?</h5>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="deleteUser">Да</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="col">
-              <button type="button" class="btn btn-danger" id="userExit">Выйти из аккаунта</button>
-            </div>
+          </div>
+          <div>
+            <button type="button" class="btn btn-danger" id="userExit" >Выйти из аккаунта</button>
+          </div>
         </div>
-        </div>
-        </div>
-      <% } %>
       </div>
-        <%- include ('./components/footer.ejs')%>
+      <% } %>
     </div>
+    <%- include ('./components/footer.ejs')%>
+  </div>
 <script src="/bootstrap-5.2.0-dist/js/bootstrap.bundle.min.js"></script>
 <script type="module" src="../scripts/userPage.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

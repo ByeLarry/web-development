@@ -38,10 +38,7 @@ if (loginUsername && loginPassword && loginButton){
             })
         }).then(data => data.text())
         .then(response => {
-            console.log(response);
             const isAuthorized = JSON.parse(response)
-            console.log(isAuthorized)
-            event.preventDefault();
             if (isAuthorized.isAuthorized == false){
                 message('Нет такого пользователя!', 'notification');
                 event.preventDefault();

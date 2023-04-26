@@ -8,19 +8,29 @@ const create = (request: http.IncomingMessage, response: http.ServerResponse, us
     getPostData(request).then(
         body => {
             const {threadTitle} = JSON.parse(body);
-            sendSQLRequest(`INSERT INTO threads (title) VALUES ('${threadTitle}')`)
+            sendSQLRequest(`select exists(select * from threads where title = '${threadTitle}')`).then(data => {
+                if(Boolean(data[0]['exists']) === false){
+                    sendSQLRequest(`INSERT INTO threads (title) VALUES ('${threadTitle}')`).then(() => {
+                        response.writeHead(200, {"Content-Type": "application/json;charset=utf-8"});
+                        response.end(JSON.stringify({isCreatedThread: true}))
+                    })
+                }
+                else{
+                    response.writeHead(400, {"Content-Type": "application/json;charset=utf-8"});
+                    response.end(JSON.stringify({isCreatedThread: false}));
+                }
+            })
         }
     )
 }
 
 const getAll = (request: http.IncomingMessage, response: http.ServerResponse, username: string) => {
     const urlRequest = url.parse(request.url!, true);
-    const threadId = urlRequest.query.id;
       const offset = urlRequest.query.offset;
       const limit = urlRequest.query.limit;
-      sendSQLRequest(`SELECT * FROM messages_view where thread_id = ${threadId} ORDER BY id limit ${limit} offset ${offset}`)
-      .then(messages => {
-        renderPage(response, "components/messages.ejs", {messages} );  
+      sendSQLRequest(`select * from threads order by id limit ${limit} offset ${offset}`)
+      .then(threadList => {
+        renderPage(response, "components/threadList.ejs", {threadList} );  
       })
 }
 

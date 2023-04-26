@@ -15,17 +15,14 @@
       <div class="header-title">
         <h2> <%= SQLdata.thread[0].title %> </h2>
       </div>
-      
-
       <div class="col-md-7 mx-auto d-grid gap-3 " id="messages">
         <%- include ('./components/messages.ejs')%>
       </div>
       <% if(username != undefined){ %>
       <div class="col-md-7 mx-auto d-grid gap-3 align-items-end">
-          <form action="" class="card ">
             <div >
               <div class="card-header">
-                <h6>Поле для ввода сообщений </h6>
+                <h6><strong>Поле для ввода сообщений</strong></h6>
               </div>
               <div class="card-body">
                 <div class="mb-3">
@@ -34,13 +31,11 @@
                 <button class="btn btn-primary" id="sendMessageButton">Отправить</button>
               </div>
             </div>
-            </form>
       </div>
-       <% } %> 
+      <% } %> 
     </div>
   </div>
-<script src="/bootstrap-5.2.0-dist/js/bootstrap.bundle.min.js"></script>
-<script type="module" src="../scripts/thread.js"></script>
-
+  <script src="/bootstrap-5.2.0-dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="../scripts/thread.js"></script>
 </body>
 </html>

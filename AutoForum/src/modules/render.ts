@@ -18,9 +18,6 @@ const renderPage = (response: http.ServerResponse, page: string, SQLdata?: any, 
           console.log(`Error 404 ${pagePath} not found`);
           response.end();
         } else {
-          // if (token){
-          //   response.writeHead(200, { "Content-Type": `{token}` });
-          // }
           response.writeHead(200, { "Content-Type": "text/html" });
           response.write(data);
           response.end();
