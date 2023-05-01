@@ -48,9 +48,10 @@ h2{
 }
 
 textarea{
-    height: 30px;
-    max-height: 100px;
-    max-width: 1000px;
+    min-height: 90px;
+    height: 90px;
+    max-height: 90px;
+    max-width: 1100px;
 }
 
 .notification {
@@ -79,3 +80,17 @@ textarea{
     color: white;
     margin: 0px;
   }
+
+  .containerImg {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    max-width: 100%;
+    height: auto; 
+  }
+  
+  .containerImg img {
+    max-width: 100%; 
+    max-height: 100%; 
+  }
+  

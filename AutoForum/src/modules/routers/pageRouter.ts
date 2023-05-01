@@ -24,6 +24,10 @@ const pageRouter = (request: http.IncomingMessage, response: http.ServerResponse
             pageController.user(request, response, username);
             break;
         }
+        case "theme":{
+            pageController.theme(request, response, username);
+            break;
+        }
     }
 }
 

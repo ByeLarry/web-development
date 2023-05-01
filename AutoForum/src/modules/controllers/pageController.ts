@@ -5,10 +5,9 @@ import { Pool } from "pg";
 import url from "url";
 
 const home = (request: http.IncomingMessage, response: http.ServerResponse, username: string) => {
-    sendSQLRequest("SELECT * FROM threads ORDER BY id limit 20")
-      .then(threadList => {
-        renderPage(response, "index.ejs", {threadList}, username);
-      })
+  sendSQLRequest(`select * from themes`).then(themeList => {
+    renderPage(response, "index.ejs", {themeList}, username);
+  })   
 }
 
 const vhod = (request: http.IncomingMessage, response: http.ServerResponse, username: string) => {
@@ -35,4 +34,15 @@ const user = (request: http.IncomingMessage, response: http.ServerResponse, user
   renderPage(response, "user.ejs",{}, username);
 }
 
-export {home, vhod, reg, thread, user}
+const theme = (request: http.IncomingMessage, response: http.ServerResponse, username: string) => {
+  const urlRequest = url.parse(request.url!, true);
+  const themeId = urlRequest.query.id;
+  sendSQLRequest(`SELECT * FROM threads where theme_id='${themeId}' ORDER BY id limit 20`)
+      .then(threadList => {
+        sendSQLRequest(`SELECT * FROM themes where id='${themeId}'`).then(theme => {
+          renderPage(response, "theme.ejs", {threadList, theme}, username);
+        })
+      })
+}
+
+export {home, vhod, reg, thread, user, theme}

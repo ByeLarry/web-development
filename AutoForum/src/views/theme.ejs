@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css" >
+    <link rel="stylesheet" href="/bootstrap-5.2.0-dist/css/bootstrap.min.css">
+    <link rel="icon" href="/bootstrap-5.2.0-dist/img/AF.png" type="image/png">
+    <title><%= SQLdata.theme[0].theme_name %></title>
+</head>
+<body>
+  <div class="wrapper">
+    <%- include ('./components/header.ejs')%>
+    <div class="main">
+      <div class="container">
+        <div class="row">
+          <% let auth = "col-md-12"; %>
+          <% if (username != undefined){ %>
+          <% auth = "col-md-8";} %>
+          <div class="<%- auth %>">
+            <div class="card" >
+              <div class="card-header">
+                <h2><%= SQLdata.theme[0].theme_name %></h2>
+              </div>
+              <div class="card-body">
+                <ul class="list-group" id="threadList">
+                <%- include('./components/threadList.ejs') %>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <% if (username != undefined){ %>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h2>Создать новое обсуждение</h2>
+                <p></p>
+              </div>
+              <div class="card-body d-grid gap-3">
+                <div class="form-group d-grid gap-3">
+                  <input autocomplete="off" type="text" class="form-control" id="thread-input", placeholder="Название темы:">
+                </div>
+                <button class="btn btn-primary" id="create-thread-button">Создать</button>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  <%- include ('./components/footer.ejs')%>
+  </div>
+<script src="/bootstrap-5.2.0-dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="../scripts/theme.js"></script>
+</body>
+</html>

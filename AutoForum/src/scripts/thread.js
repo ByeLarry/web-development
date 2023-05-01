@@ -4,10 +4,11 @@ import { message } from "./modules/notification.js";
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const threadId = urlParams.get('id');
+
 const messages = document.querySelector('#messages');
 if (messages){
     const limit = 10;
-    let offset = 11;
+    let offset = 10;
     let flag = false;
     window.addEventListener('scroll', async (event) => {
         let documentHeight = document.body.scrollHeight;
@@ -32,24 +33,29 @@ if (messages){
 
 const sendMessageButton = document.querySelector('#sendMessageButton');
 const messageText = document.querySelector('#sendMessageText');
+const fileInput = document.querySelector('#fileInput');
+
 if (sendMessageButton && messageText){
     sendMessageButton.addEventListener('click', async (event) =>{
         const newMessage = messageText.value.trim();
-        if (newMessage){
+        if (newMessage || fileInput.files.length > 0){
             messageText.value = '';
-            await fetch(`api/message/newMsg`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
-                body: JSON.stringify({
-                    threadId: threadId,
-                    message: newMessage
-                })
-            })
-            .then(() => {
-                location.replace(`/thread?id=${threadId}`);
-            })
+            let fileContent = null;
+            if (fileInput.files.length > 0) {
+                const reader = new FileReader();
+                reader.readAsDataURL(fileInput.files[0]);
+                reader.onload = async () => {
+                    fileContent = reader.result;
+                    if(!isImage(fileInput.files[0])){
+                        message('Отправить можно только изображение!', 'notification');
+                    } else {
+                        await sendFile(newMessage, fileContent);
+                    }
+                    
+                };
+            } else {
+                await sendFile(newMessage, fileContent);
+            }
         }
         else{
             message('Нельзя отправить пустое сообщение!', 'notification');
@@ -57,3 +63,32 @@ if (sendMessageButton && messageText){
         }
     })
 }
+
+function isImage(file) {
+    const acceptedImageTypes = ['image/jpg', 'image/jpeg', 'image/png'];
+    return acceptedImageTypes.includes(file.type);
+}
+
+async function sendFile(message, fileContent) {
+    await fetch(`api/message/newMsg`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify({
+            threadId: threadId,
+            message: message,
+            file: fileContent
+        })
+    })
+    .then(() => {
+        location.replace(`/thread?id=${threadId}`);
+    });
+}
+
+
+
+
+
+
+

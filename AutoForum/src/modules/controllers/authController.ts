@@ -15,7 +15,6 @@ const registration = (request: http.IncomingMessage, response: http.ServerRespon
               sendSQLRequest(`insert into users (name, password) values('${username}', '${password}')`).then(() => {
                 const secret  = process.env.SECRET || "secret";
                 const token = jwt.sign({username}, secret, {expiresIn: "1d"});
-                console.log(secret)
                 response.setHeader("Set-Cookie", cookie.serialize("token", token, {
                   httpOnly: true,
                   maxAge: 24 * 60 * 60,

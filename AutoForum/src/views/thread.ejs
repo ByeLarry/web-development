@@ -21,14 +21,14 @@
       <% if(username != undefined){ %>
       <div class="col-md-7 mx-auto d-grid gap-3 align-items-end">
             <div >
-              <div class="card-header">
-                <h6><strong>Поле для ввода сообщений</strong></h6>
-              </div>
               <div class="card-body">
                 <div class="mb-3">
-                  <textarea class="form-control" id="sendMessageText"></textarea> 
+                  <textarea class="form-control" id="sendMessageText" style="margin-bottom: 20px" placeholder="Поле для ввода сообщений"></textarea> 
+                  <input type="file" class="form-control-file form-control" id="fileInput">
                 </div>
-                <button class="btn btn-primary" id="sendMessageButton">Отправить</button>
+                <div>
+                  <button class="btn btn-primary" id="sendMessageButton">Отправить</button>
+                </div>
               </div>
             </div>
       </div>

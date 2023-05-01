@@ -7,10 +7,10 @@ import renderPage from "../render";
 const create = (request: http.IncomingMessage, response: http.ServerResponse, username: string) => {
     getPostData(request).then(
         body => {
-            const {threadTitle} = JSON.parse(body);
+            const {threadTitle, threadId} = JSON.parse(body);
             sendSQLRequest(`select exists(select * from threads where title = '${threadTitle}')`).then(data => {
                 if(Boolean(data[0]['exists']) === false){
-                    sendSQLRequest(`INSERT INTO threads (title) VALUES ('${threadTitle}')`).then(() => {
+                    sendSQLRequest(`INSERT INTO threads (title, theme_id) VALUES ('${threadTitle}', '${threadId}')`).then(() => {
                         response.writeHead(200, {"Content-Type": "application/json;charset=utf-8"});
                         response.end(JSON.stringify({isCreatedThread: true}))
                     })
@@ -28,7 +28,8 @@ const getAll = (request: http.IncomingMessage, response: http.ServerResponse, us
     const urlRequest = url.parse(request.url!, true);
       const offset = urlRequest.query.offset;
       const limit = urlRequest.query.limit;
-      sendSQLRequest(`select * from threads order by id limit ${limit} offset ${offset}`)
+      const themeId = urlRequest.query.id;
+      sendSQLRequest(`select * from threads where theme_id =${themeId} order by id limit ${limit} offset ${offset}`)
       .then(threadList => {
         renderPage(response, "components/threadList.ejs", {threadList} );  
       })

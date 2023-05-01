@@ -1,4 +1,4 @@
-<% SQLdata.messages.forEach(({id, name, content, date, title}) => { %>
+<% SQLdata.messages.forEach(({id, name, content, date, title, image}) => { %>
 <div class="card">
     <div class="card-header" style="display: flex; justify-content: space-between;">
         <h6> <%= name %> </h6>
@@ -8,6 +8,11 @@
     </div>
     <div class="card-body">
         <p> <%= content %> </p>
+        <% if (image !== null && image !=='null' ){ %>
+            <div class="containerImg">
+                <img src="/<%= image  %>" alt="Ошибка загрузки" >
+            </div>
+        <% } %>
     </div>
 </div>
 <% }) %>

@@ -1,8 +1,9 @@
 import url from "url";
 import sendSQLRequest from "../forDB";
 import renderPage from "../render";
-import http from "http";
+import http, { IncomingMessage} from "http";
 import getPostData from "../getPostData";
+import fs from 'fs';
 
 const getAll = (request: http.IncomingMessage, response: http.ServerResponse, username: string) => {
     const urlRequest = url.parse(request.url!, true);
@@ -17,15 +18,24 @@ const getAll = (request: http.IncomingMessage, response: http.ServerResponse, us
 
 
 const newMsg = (request: http.IncomingMessage, response: http.ServerResponse, username: string) => {
-  getPostData(request).then(
-      body => {
-        const {threadId, message} = JSON.parse(body);
-        sendSQLRequest(`insert into messages(content, thread_id, name) values ('${message}', ${threadId}, '${username}')`)
-        .then(() => {
-          response.writeHead(200);
-          response.end();
-        })
-      })
+ getPostData(request).then(
+     body => {
+       const {threadId, message, file} = JSON.parse(body);
+       let fileDir = null
+       if (file) {
+        fileDir = `uploads/${new Date().getTime()}.png`
+        const fileParts = file.split(',');
+        const fileBody = fileParts[1];
+        const binaryData = Buffer.from(fileBody, 'base64');
+        fs.writeFileSync(`src/${fileDir}`, binaryData);
+       };
+       sendSQLRequest(`insert into messages(content, thread_id, name, image) values ('${message}', ${threadId}, '${username}', '${fileDir}')`).then(() => {
+         response.writeHead(200);
+         response.end();
+       })
+     }
+ )
 }
+
 
 export {getAll, newMsg};

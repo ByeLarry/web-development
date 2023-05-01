@@ -11,11 +11,9 @@ const renderPage = (response: http.ServerResponse, page: string, SQLdata?: any, 
   const pagePath: string = path.join(__dirname,  "../views/", page);
   ejs.renderFile(pagePath, modData, (err, data) => { 
         if (err) {
-          console.log(err);
           response.writeHead(404);
-          response.write("File not found");
-          response.end("error");
-          console.log(`Error 404 ${pagePath} not found`);
+          response.write("File not found!\n");
+          response.end("Error 404");
           response.end();
         } else {
           response.writeHead(200, { "Content-Type": "text/html" });
