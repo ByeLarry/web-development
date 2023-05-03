@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/main.css" >
+    <link rel="stylesheet" href="/bootstrap-5.2.0-dist/css/bootstrap.min.css">
+    <link rel="icon" href="/bootstrap-5.2.0-dist/img/AF.png" type="image/png">
+    <title>Вход</title>
+</head>
+<body>
+  <div class="wrapper">
+    <%- include ('./components/header.ejs')%>
+    <div class="main">
+      <div class="container">
+        <div class="col-md-6">
+          <input autocomplete="off" type="text" class="form-control" id="loginUsername" placeholder="Имя"><br>
+          <input type="password" class="form-control" id="loginPassword" placeholder="Пароль">
+        </div> 
+        <div class="container my-3">
+          <button class="btn btn-dark" id="loginButton">Вход</button>
+        </div>
+      </div>
+    </div>
+    <%- include ('./components/footer.ejs')%>
+  </div>    
+<script src="/bootstrap-5.2.0-dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="../scripts/login.js"></script>
+</body>
+</html>
