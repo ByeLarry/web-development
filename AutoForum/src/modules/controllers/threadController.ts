@@ -3,6 +3,7 @@ import url from "url";
 import sendSQLRequest from "../forDB";
 import getPostData from "../getPostData";
 import renderPage from "../render";
+import sorter from "../sort";
 
 const create = (request: http.IncomingMessage, response: http.ServerResponse, username: string) => {
     getPostData(request).then(
@@ -29,7 +30,9 @@ const getAll = (request: http.IncomingMessage, response: http.ServerResponse, us
       const offset = urlRequest.query.offset;
       const limit = urlRequest.query.limit;
       const themeId = urlRequest.query.id;
-      sendSQLRequest(`select * from threads where theme_id =${themeId} order by id limit ${limit} offset ${offset}`)
+      const sort = urlRequest.query.sort;
+      let sortType = sorter(sort);
+      sendSQLRequest(`select * from threads where theme_id =${themeId} ${sortType} limit ${limit} offset ${offset}`)
       .then(threadList => {
         renderPage(response, "components/threadList.ejs", {threadList} );  
       })

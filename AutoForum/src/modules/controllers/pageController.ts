@@ -3,9 +3,10 @@ import sendSQLRequest from "../forDB";
 import renderPage from "../render";
 import { Pool } from "pg";
 import url from "url";
+import sorter from "../sort";
 
 const home = (request: http.IncomingMessage, response: http.ServerResponse, username: string) => {
-  sendSQLRequest(`select * from themes`).then(themeList => {
+  sendSQLRequest(`select * from themes order by theme_name ASC`).then(themeList => {
     renderPage(response, "index.ejs", {themeList}, username);
   })   
 }
@@ -37,7 +38,10 @@ const user = (request: http.IncomingMessage, response: http.ServerResponse, user
 const theme = (request: http.IncomingMessage, response: http.ServerResponse, username: string) => {
   const urlRequest = url.parse(request.url!, true);
   const themeId = urlRequest.query.id;
-  sendSQLRequest(`SELECT * FROM threads where theme_id='${themeId}' ORDER BY id limit 20`)
+  const sort = urlRequest.query.sort;
+  let sortType = sorter(sort);
+  
+  sendSQLRequest(`SELECT * FROM threads where theme_id='${themeId}' ${sortType} limit 20`)
       .then(threadList => {
         sendSQLRequest(`SELECT * FROM themes where id='${themeId}'`).then(theme => {
           renderPage(response, "theme.ejs", {threadList, theme}, username);

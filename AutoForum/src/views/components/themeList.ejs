@@ -1,7 +1,7 @@
 <% SQLdata.themeList.forEach(({id, theme_name}) => { %>
     <div class="card">
         <div class="card-header">
-            <a class="nav-link active" href="theme?id=<%=id %>"><%= theme_name %></a>
+            <a class="nav-link active" href="theme?id=<%=id %>&sort=id"><%= theme_name %></a>
         </div>
     </div>
 <% }) %>
