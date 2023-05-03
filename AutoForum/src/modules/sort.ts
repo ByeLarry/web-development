@@ -1,29 +1,22 @@
-
 const sorter = (sort :string | undefined | string[]) => {
     if (typeof sort === "undefined") {
         return "ORDER BY id";
     };
-
-    let sortType = "";
+    
     switch (sort) {
       case "id":{
-          sortType = "ORDER BY id";
-          break;
+        return "ORDER BY id";
       }
       case "asc":{
-          sortType = "ORDER BY title ASC";
-          break;
+        return "ORDER BY title ASC";
       }
       case "desc":{
-          sortType = "ORDER BY title DESC";
-          break;
+        return "ORDER BY title DESC";
       }
       default:{
-          sortType = "ORDER BY id";
-      break;
+        return "ORDER BY id";
       }
     }
-    return sortType;
 }
 
 export default sorter;

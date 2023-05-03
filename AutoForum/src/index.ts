@@ -2,7 +2,6 @@ import http from "http";
 import path from "path";
 import url from "url";
 import { Pool } from "pg";
-
 import renderPage from "./modules/render";
 import getContentType from "./modules/contentType";
 import sendSQLRequest from "./modules/forDB";
