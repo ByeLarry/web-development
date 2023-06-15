@@ -1,20 +1,25 @@
-import type http from 'http'
-import * as userController from '../controllers/userController'
+import type http from "http";
+import * as userController from "../controllers/userController";
 
-const userRouter = (request: http.IncomingMessage, response: http.ServerResponse, pathName: string, username: string): void => {
+function userRouter(
+  request: http.IncomingMessage,
+  response: http.ServerResponse,
+  pathName: string,
+  username: string
+): void {
   switch (pathName) {
-    case 'create':{
-      break
+    case "create": {
+      break;
     }
-    case 'update':{
-      userController.updatePassword(request, response, username)
-      break
+    case "update": {
+      userController.updatePassword(request, response, username);
+      break;
     }
-    case 'delete':{
-      userController.deleteUser(request, response, username)
-      break
+    case "delete": {
+      userController.deleteUser(request, response, username);
+      break;
     }
   }
 }
 
-export = userRouter
+export = userRouter;

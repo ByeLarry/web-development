@@ -1,15 +1,16 @@
-
-const getContentType = (ext: string): 'text/css' | 'image/png' | 'application/javascript' | 'text/plain' => {
+function getContentType(
+  ext: string
+): "text/css" | "image/png" | "application/javascript" | "text/plain" {
   switch (ext) {
-    case '.css':
-      return 'text/css'
-    case '.png':
-      return 'image/png'
-    case '.js':
-      return 'application/javascript'
+    case ".css":
+      return "text/css";
+    case ".png":
+      return "image/png";
+    case ".js":
+      return "application/javascript";
     default:
-      return 'text/plain'
+      return "text/plain";
   }
 }
 
-export = getContentType
+export = getContentType;

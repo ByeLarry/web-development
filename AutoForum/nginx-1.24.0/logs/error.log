@@ -341,3 +341,21 @@
 2023/06/11 12:21:12 [error] 8684#9740: *93 client intended to send too large body: 1162130 bytes, client: 127.0.0.1, server: , request: "POST /api/message/newMsg HTTP/1.1", host: "localhost", referrer: "http://localhost/thread?id=3"
 2023/06/11 12:21:17 [error] 8684#9740: *94 client intended to send too large body: 1162130 bytes, client: 127.0.0.1, server: , request: "POST /api/message/newMsg HTTP/1.1", host: "localhost", referrer: "http://localhost/thread?id=3"
 2023/06/11 12:32:45 [notice] 496#8652: signal process started
+2023/06/11 13:55:08 [emerg] 6132#13168: invalid number of arguments in "root" directive in D:\My GitHub\web-development\AutoForum\nginx-1.24.0/conf/nginx.conf:46
+2023/06/11 13:55:38 [emerg] 3896#6056: invalid number of arguments in "root" directive in D:\My GitHub\web-development\AutoForum\nginx-1.24.0/conf/nginx.conf:46
+2023/06/11 14:00:41 [emerg] 12212#3092: invalid number of arguments in "root" directive in D:\My GitHub\web-development\AutoForum\nginx-1.24.0/conf/nginx.conf:46
+2023/06/11 14:24:27 [notice] 7904#1104: signal process started
+2023/06/14 10:39:06 [notice] 6112#9436: signal process started
+2023/06/15 20:52:51 [notice] 1552#4380: signal process started
+2023/06/15 21:08:12 [error] 3332#10212: *11 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:3000/", host: "localhost", referrer: "http://localhost/theme?id=2&sort=id"
+2023/06/15 21:08:14 [error] 3332#10212: *11 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", upstream: "http://[::1]:3000/", host: "localhost", referrer: "http://localhost/theme?id=2&sort=id"
+2023/06/15 21:08:14 [error] 3332#10212: *11 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://localhost/favicon.ico", host: "localhost", referrer: "http://localhost/"
+2023/06/15 21:08:18 [error] 3332#10212: *11 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", upstream: "http://localhost/", host: "localhost", referrer: "http://localhost/theme?id=2&sort=id"
+2023/06/15 21:08:18 [error] 3332#10212: *11 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://localhost/favicon.ico", host: "localhost", referrer: "http://localhost/"
+2023/06/15 21:08:20 [error] 3332#10212: *11 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", upstream: "http://localhost/", host: "localhost", referrer: "http://localhost/theme?id=2&sort=id"
+2023/06/15 21:08:20 [error] 3332#10212: *11 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://localhost/favicon.ico", host: "localhost", referrer: "http://localhost/"
+2023/06/15 21:08:22 [error] 3332#10212: *11 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", upstream: "http://localhost/", host: "localhost", referrer: "http://localhost/theme?id=2&sort=id"
+2023/06/15 21:08:22 [error] 3332#10212: *11 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://localhost/favicon.ico", host: "localhost", referrer: "http://localhost/"
+2023/06/15 21:08:22 [error] 3332#10212: *11 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", upstream: "http://localhost/", host: "localhost", referrer: "http://localhost/theme?id=2&sort=id"
+2023/06/15 21:08:22 [error] 3332#10212: *11 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://localhost/favicon.ico", host: "localhost", referrer: "http://localhost/"
+2023/06/15 21:45:59 [notice] 7840#7704: signal process started

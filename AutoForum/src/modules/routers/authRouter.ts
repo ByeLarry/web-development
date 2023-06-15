@@ -1,20 +1,24 @@
-import type http from 'http'
-import * as authController from '../controllers/authController'
+import type http from "http";
+import * as authController from "../controllers/authController";
 
-const authRouter = (request: http.IncomingMessage, response: http.ServerResponse, pathName: string, username: string): void => {
+function authRouter(
+  request: http.IncomingMessage,
+  response: http.ServerResponse,
+  pathName: string
+): void {
   switch (pathName) {
-    case 'registration':{
-      authController.registration(request, response, username)
-      break
+    case "registration": {
+      authController.registration(request, response);
+      break;
     }
-    case 'login':{
-      authController.login(request, response, username)
-      break
+    case "login": {
+      authController.login(request, response);
+      break;
     }
-    case 'logout':{
-      authController.logout(request, response, username)
+    case "logout": {
+      authController.logout(request, response);
     }
   }
 }
 
-export = authRouter
+export = authRouter;
