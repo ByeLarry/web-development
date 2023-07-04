@@ -369,3 +369,6 @@
 2023/07/04 19:19:25 [error] 6080#3380: *211 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", upstream: "http://localhost/", host: "localhost"
 2023/07/04 19:19:26 [error] 6080#3380: *211 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://localhost/favicon.ico", host: "localhost", referrer: "http://localhost/"
 2023/07/04 19:19:35 [notice] 488#8648: signal process started
+2023/07/04 19:56:23 [notice] 4212#2624: signal process started
+2023/07/04 19:56:24 [notice] 7928#14444: signal process started
+2023/07/04 19:56:24 [error] 7928#14444: CreateFile() "D:\My GitHub\web-development\AutoForum\nginx-1.24.0/logs/nginx.pid" failed (2: The system cannot find the file specified)

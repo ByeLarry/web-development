@@ -58,7 +58,8 @@ prevButton.addEventListener("click", () => {
 for (let i = 0; i < elements.length; i++) {
   const newText = marked.parse(elements[i].textContent, {headerIds: false, mangle: false});
   elements[i].innerHTML = newText;
-}
+} 
+
 
 
 if (sendMessageButton && messageText) {
