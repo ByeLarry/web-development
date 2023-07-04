@@ -359,3 +359,13 @@
 2023/06/15 21:08:22 [error] 3332#10212: *11 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", upstream: "http://localhost/", host: "localhost", referrer: "http://localhost/theme?id=2&sort=id"
 2023/06/15 21:08:22 [error] 3332#10212: *11 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://localhost/favicon.ico", host: "localhost", referrer: "http://localhost/"
 2023/06/15 21:45:59 [notice] 7840#7704: signal process started
+2023/07/03 20:02:42 [notice] 15912#15568: signal process started
+2023/07/03 20:02:47 [notice] 14520#4368: signal process started
+2023/07/04 19:19:17 [error] 6080#3380: *211 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", upstream: "http://[::1]:3000/", host: "localhost"
+2023/07/04 19:19:19 [error] 6080#3380: *211 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:3000/", host: "localhost"
+2023/07/04 19:19:19 [error] 6080#3380: *211 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://localhost/favicon.ico", host: "localhost", referrer: "http://localhost/"
+2023/07/04 19:19:22 [error] 6080#3380: *211 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", upstream: "http://localhost/", host: "localhost"
+2023/07/04 19:19:22 [error] 6080#3380: *211 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://localhost/favicon.ico", host: "localhost", referrer: "http://localhost/"
+2023/07/04 19:19:25 [error] 6080#3380: *211 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", upstream: "http://localhost/", host: "localhost"
+2023/07/04 19:19:26 [error] 6080#3380: *211 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://localhost/favicon.ico", host: "localhost", referrer: "http://localhost/"
+2023/07/04 19:19:35 [notice] 488#8648: signal process started

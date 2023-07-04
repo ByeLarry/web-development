@@ -6,8 +6,8 @@
         day: '2-digit', hour: '2-digit', minute: '2-digit'}); %>
         <p > <%= formattedDate %> </p>
     </div>
-    <div class="card-body">
-        <p> <%= content %> </p>
+    <div class="card-body" id="msgContainer">
+        <p name="msgTxt"> <%= content %> </p>
         <% if (image !== null && image !=='null' ){ %>
             <div class="containerImg">
                 <img src="http://localhost/<%= image %>" alt="Ошибка загрузки" >

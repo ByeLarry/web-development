@@ -1,3 +1,6 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable import/extensions */
+
 import { message } from "./modules/notification.js";
 
 document.addEventListener("keydown", function (event) {
@@ -43,6 +46,20 @@ if (messages) {
 const sendMessageButton = document.querySelector("#sendMessageButton");
 const messageText = document.querySelector("#sendMessageText");
 const fileInput = document.querySelector("#fileInput");
+const elements = document.querySelectorAll("[name='msgTxt']");
+const prevButton = document.querySelector("#previewButton");
+const preview = document.querySelector("#preview");
+
+prevButton.addEventListener("click", () => {
+  preview.innerHTML = marked.parse(messageText.value, {headerIds: false, mangle: false});
+})
+
+
+for (let i = 0; i < elements.length; i++) {
+  const newText = marked.parse(elements[i].textContent, {headerIds: false, mangle: false});
+  elements[i].innerHTML = newText;
+}
+
 
 if (sendMessageButton && messageText) {
   sendMessageButton.addEventListener("click", async (event) => {
