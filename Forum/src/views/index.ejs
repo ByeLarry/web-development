@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://localhost/main.css" >
+    <link href="https://fonts.googleapis.com/css?family=Helvetica" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="icon" href="http://localhost/globe.png" type="image/png">
+    <title>Форум</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="spinner" style="display: none;"></div>
+    <%- include ('./components/header.ejs')%>
+    <div class="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card" >
+              <div class="card-header">
+                <h2>Список тем</h2>
+              </div>
+              <div class="card-body">
+                <ul class="list-group" >
+                  <%- include('./components/themeList.ejs') %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <%- include ('./components/footer.ejs')%>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script type="module" src="http://localhost/singin.js"></script>
+  <script type="module" src="http://localhost/login.js"></script>
+  <script type="module" src="http://localhost/user.js"></script>  
+</body>
+</html>

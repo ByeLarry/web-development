@@ -1,0 +1,21 @@
+<% SQLdata.messages.forEach(({id, name, content, date, title, image}) => { %>
+<li class="list-group-item" style="padding: 0px; border: 1px solid rgb(148, 148, 148);">
+<div class="card" class="message" style="border: none;">
+    <div class="card-header" style="display: flex; justify-content: space-between; padding: 0px">
+        <h6 style="padding: 7px; margin-bottom: 0px;"> <%= name %> </h6>
+        <% const formattedDate = new Date(date).toLocaleString('ru-RU', { year: 'numeric', month: '2-digit', 
+        day: '2-digit', hour: '2-digit', minute: '2-digit'}); %>
+        <p style="padding: 7px; margin-bottom: 0px;"> <%= formattedDate %> </p>
+    </div>
+    <div class="card-body" id="msgContainer" style="word-wrap: break-word">
+        <p name="msgTxt" style="word-wrap: break-word"> <%= content %></p>
+        <% if (image !== null && image !=='null' ){ %>
+            <div class="containerImg">
+                <img src="http://localhost/<%= image %>" alt="Ошибка загрузки">
+            </div>
+        <% } %>
+    </div>
+</div>
+</li>
+<% }) %>
+

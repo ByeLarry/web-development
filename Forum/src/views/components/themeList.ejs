@@ -1,0 +1,8 @@
+<% SQLdata.themeList.forEach(({id, theme_name, comment}) => { %>
+    <div class="card">
+        <div class="card-header">
+                <a class="" href="theme?id=<%=id %>&sort=id" style="font-size: 20px; text-decoration: none;"><%= theme_name %></a><br>
+                <p style="color: gray">Описание: <%= comment %></p>
+        </div>
+    </div>
+<% }) %>

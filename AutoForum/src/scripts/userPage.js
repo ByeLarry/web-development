@@ -34,6 +34,13 @@ if (userExit) {
   })
 }
 
+const noButton = document.querySelector('#no-button')
+if (noButton) {
+  noButton.addEventListener('click', async (event) => {
+    message('Аккаунт не удален.', 'notification')
+  })
+}
+
 const changePassword = document.querySelector('#changePassword')
 const oldPassword = document.querySelector('#oldPassword')
 const newPassword = document.querySelector('#newPassword')

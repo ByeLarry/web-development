@@ -97,3 +97,7 @@ textarea{
     word-wrap: break-word;
     overflow-wrap: break-word;
   }
+
+  .elastic li.hide {
+    display: none;
+  }

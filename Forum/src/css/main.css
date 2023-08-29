@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    scrollbar-gutter: stable;
+    box-sizing: border-box;
+}
+
+footer{
+    width: 100%;
+    height: 70px;
+    background: rgb(60, 54, 255);
+    margin: 0 aito;
+    text-align: center;
+    padding: 25px;
+    color: rgb(255, 255, 255);
+}
+
+html,body{
+    height: 100%;
+    
+}
+
+.wrapper{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: rgb(60, 54, 255);
+}
+
+.main{
+    padding: 30px;
+    flex: auto;
+    background-color: rgb(222, 222, 222);
+    font-family: Helvetica;
+}
+
+.navbarr{
+    background-color: rgb(28, 33, 29);
+    color: aliceblue;
+}
+
+
+
+.card{
+    margin-bottom: 20px;
+}
+
+.header-title{
+    display: flex;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.msg-h{
+    height: 150px;
+}
+
+textarea{
+    max-height: 150px;
+}
+
+.notification {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f44336;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+
+.success {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(30, 197, 30);
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.usernameHead{
+  color: white;
+  margin: 0px;
+}
+
+ .containerImg {
+   display: flex; 
+  justify-content: center; 
+  align-items: center;  
+}  
+
+ .containerImg img {
+  max-width: 100%; 
+}
+
+
+.modal-body {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.elastic li.hide {
+  display: none;
+}
+
+
+.login-button {
+  color: rgb(255, 255, 255);
+  margin: 5px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  color: rgb(113, 47, 47);
+  cursor: pointer;
+  margin: 5px;
+  margin-top: 0px;
+}
+
+.bg-grey{
+  background-color: rgb(60, 54, 255);
+}
+
+.insert {
+  margin: 10px;
+}
+
+.insert input,
+.insert button {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.theme-header {
+  display: flex;
+  align-items: flex-start;
+}
+
+
+.create-thread-input {
+  float: left; 
+  min-width: 290px; 
+  background-color: #f44336;
+}
+
+.create-thread-button {
+  width: 100px; 
+  float: right; 
+  margin-top: 10px;
+}
+
+.spinner {
+  position: fixed;
+  top: 50%;
+  right: calc(50vw - 50px);
+  width: 100px;
+  height: 100px;
+  border: 4px solid rgba(6, 87, 250, 0.5);
+  border-top: 4px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  z-index: 1;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

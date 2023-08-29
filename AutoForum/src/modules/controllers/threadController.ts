@@ -66,4 +66,40 @@ function getAll(
     });
 }
 
-export { create, getAll };
+function search(
+  request: http.IncomingMessage,
+  response: http.ServerResponse
+): void {
+  const urlRequest = url.parse(request.url!, true);
+  const sortType = sorter(urlRequest.query.sort);
+  sendSQLRequest(
+    `select * from threads where theme_id =${urlRequest.query.id} and title like '%${urlRequest.query.val}%' ${sortType}`
+  )
+    .then((threadList) => {
+      renderPage(response, "components/threadList.ejs", { threadList });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+function count(
+  request: http.IncomingMessage,
+  response: http.ServerResponse
+): void {
+  const urlRequest = url.parse(request.url!, true);
+  sendSQLRequest(
+    `select count(*) from threads where theme_id=${urlRequest.query.id}`
+  )
+    .then((data) => {
+      response.writeHead(200, {
+        "Content-Type": "application/json;charset=utf-8",
+      });
+      response.end(JSON.stringify({ count: data[0].count }));
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export { create, getAll, search, count };

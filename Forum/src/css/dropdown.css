@@ -1,0 +1,47 @@
+.drop-button {
+    background-color: rgb(60, 54, 255);
+    color: white;
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .nav {
+    position: relative;
+    display: inline-block;
+    justify-content: space-between; 
+    margin: 0% 10%;
+  }
+  
+  
+  .nav .form-control {
+    width: 300px;
+    height: 40px;
+  }
+  
+  .drop-down {
+    position: absolute;
+    background-color: #cdcdcd;
+    min-width: 160px;
+    display: none;
+    z-index: 999; 
+    border-radius: 10px;
+  }
+  
+  .drop-down p {
+    margin: 0%;
+    color: black;
+    padding: 10px 15px;
+    display: block;
+    border-radius: 10px;
+  }
+  
+  .drop-down p:hover {
+    background-color: #ffffff
+  }
+  
+  .drop-container:hover .drop-down {
+    display: block;
+  }

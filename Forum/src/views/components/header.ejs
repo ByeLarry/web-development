@@ -1,0 +1,74 @@
+<header class="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-grey">
+      <div class="container">
+        <a class="navbar-brand p-0" href="http://localhost/">
+          <img src="http://localhost/home.png" alt="Logo" width="40px" tabindex="1">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav" style="justify-content: flex-end">
+          <% if (username == undefined){ %>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <h5 class='login-button' data-toggle="modal" data-target="#loginModal" tabindex="2">Вход</h5>
+              <div class="modal fade" id="loginModal" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="deleteModalLabel" tabindex="2">Вход</h5>
+                    </div>
+                    <div class="modal-footer">
+                      <input autocomplete="off" type="text" class="form-control" id="loginUsername" placeholder="Имя" style="margin-bottom: 20px">
+                      <input type="password" class="form-control" id="loginPassword" placeholder="Пароль">
+                      <button class="btn btn-dark" id="loginButton" data-dismiss="modal">Вход</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <h5 class='login-button' data-toggle="modal" data-target="#singinModal" style="margin-right: 10px" tabindex="3">Регистрация</h5>
+              <div class="modal fade" id="singinModal" tabindex="-1" role="dialog" aria-labelledby="singinModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="deleteModalLabel">Регистрация</h5>
+                    </div>
+                    <div class="modal-footer">
+                      <input autocomplete="off" type="text" class="form-control" id="username" placeholder="Имя" width="300pxs" style="margin-bottom: 20px">
+                      <input type="password" class="form-control" id="userPassword" placeholder="Пароль" style="margin-bottom: 20px">
+                      <input type="password" class="form-control" id="userPasswordConfirm" placeholder="Подтверждение пароля" style="margin-bottom: 20px">
+                      <button class="btn btn-dark" id="registrationButton" data-dismiss="modal">Зарегистрироваться</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <% } else { %>
+            <ul class="navbar-nav">
+              <li>
+                <h5 class='login-button ' data-toggle="modal" data-target="#userModal" tabindex="4"><%= username %></h5>
+                <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content" id="userPopup">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Личный кабинет</h5>
+                      </div>
+                      <div class="modal-footer" style="justify-content: space-between">
+                        <div>
+                          <button type="button" class="btn btn-dark" id="changePasswordButton">Изменить пароль</button>
+                          <button type="button" class="btn btn-dark" id="deleteAccountButton">Удалить аккаунт</button>
+                        </div>
+                        <button type="button" class="btn btn-primary" id="user-logout" data-dismiss="modal">Выйти</button>
+                      </div>
+                    </div>
+                  </div>
+              </li>
+            </ul>
+          <% } %>
+        </div>
+      </div>
+    </nav> 
+</header>

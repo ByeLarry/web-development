@@ -14,5 +14,5 @@ export const message = (msg, classType) => {
   })
   setTimeout(function () {
     newNotification.style.display = 'none'
-  }, 3000)
+  }, 5000)
 }

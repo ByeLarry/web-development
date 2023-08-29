@@ -20,13 +20,29 @@
                 <h2><%= SQLdata.theme[0].theme_name %></h2>
               </div>
               <div class="card-body">
-                <ul class="list-group" id="threadList">
+                <ul class="list-group elastic" id="threadList">
                 <%- include('./components/threadList.ejs') %>
                 </ul>
               </div>
             </div>
           </div>
           <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h2>Сортировка</h2>
+              </div>
+              <div class="card-body">
+                <button class="btn btn-secondary" style="margin-right: 10px;" id="sortID">По порядку</button>
+                <button class="btn btn-secondary" style="margin-right: 10px;" id="sortASC">А-Я</button>
+                <button class="btn btn-secondary" style="margin-right: 10px;" id="sortDESC">Я-А</button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <input type="text" class="form-control" id="search" placeholder="Поиск"> <br>
+                <button class="btn btn-primary" id="searchButton">Найти</button>
+              </div>
+            </div>
             <% if (username != undefined){ %>
             <div class="card">
               <div class="card-header">
@@ -40,16 +56,6 @@
               </div>
             </div>
             <% } %>
-            <div class="card">
-              <div class="card-header">
-                <h2>Сортировка</h2>
-              </div>
-              <div class="card-body">
-                <button class="btn btn-secondary" style="margin-right: 10px;" id="sortID">По порядку</button>
-                <button class="btn btn-secondary" style="margin-right: 10px;" id="sortASC">А-Я</button>
-                <button class="btn btn-secondary" style="margin-right: 10px;" id="sortDESC">Я-А</button>
-              </div>
-            </div>
           </div>
         </div>
       </div>

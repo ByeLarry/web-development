@@ -1,0 +1,29 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "overrides": [
+        {
+            "files": ["*.ts"],
+            "extends": ["@tinkoff/eslint-config/app"],
+            "rules": {
+                "promise/no-promise-in-callback": "off"
+            }   
+        }
+        // {
+        //     "files": ["*.js"],
+        //     "extends": ["airbnb-base"],
+        //     "rules": {
+        //         "import/extensions": "off",
+        //         "eqeqeq": "off",
+        //         "no-plusplus": "off"
+        //     }
+        // }
+    ]
+}

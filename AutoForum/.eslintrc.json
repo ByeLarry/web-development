@@ -3,6 +3,7 @@
         "browser": true,
         "es2021": true
     },
+    "ignorePatterns": ["src/scripts/**/*.js"],
     "extends": ["@tinkoff/eslint-config/app"],
     "parserOptions": {
         "ecmaVersion": "latest",

@@ -1,0 +1,10 @@
+<% SQLdata.threadList.forEach(({id, title}) => { %>
+    <li style="list-style-type: none">
+        <div class="card">
+            <div class="card-header">   
+                <a class="nav-link active" href="thread?id=<%=id %>"><%= title %></a>
+            </div>
+        </div>
+    </li>
+<% }) %>
+

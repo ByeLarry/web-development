@@ -1,11 +1,14 @@
-/* eslint-disable no-case-declarations */
 import { message } from './modules/notification.js'
+
+const limit = 20
+let offset = 20
+let flag = false
 
 const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString)
 const threadId = urlParams.get('id')
 const sort = urlParams.get('sort')
-
+const threadList = document.querySelector('#threadList')
 switch (sort) {
   case 'asc':
     const sortASC = document.querySelector('#sortASC')
@@ -33,12 +36,50 @@ switch (sort) {
     break
 }
 
-const threadList = document.querySelector('#threadList')
-if (threadList) {
-  const limit = 20
-  let offset = 20
-  let flag = false
+const search = document.querySelector('#search')
+const searchButton = document.querySelector('#searchButton') 
+ document.querySelector('#search').oninput = async () => { 
+  let val = search.value.trim()
+  let allItems = document.querySelectorAll('.elastic li')
+  allItems.forEach(function(elem){
+    elem.remove()
+  })
+  await fetch(`api/thread/search?id=${threadId}&val=${val}&sort=${sort}`, {
+    method: 'GET'
+  }).then(response => response.text())
+    .then(data => {
+      if (data.length > 0) {
+        threadList.insertAdjacentHTML('beforeend', data)
+      }
+    })
 
+  let searchItems = document.querySelectorAll('.elastic li')
+  await fetch(`api/thread/count?id=${threadId}`, {
+    method: 'GET'
+  }).then(response => response.text())
+  .then(data => {
+    offset = JSON.parse(data).count + 20
+  })
+  if (val != '') {
+    searchItems.forEach(function(elem){
+      if (elem.innerText.search(val) == -1) {
+        elem.classList.add('hide');
+      } else {
+        elem.classList.remove('hide');
+      }
+    })
+  }
+  else {
+    searchItems.forEach(function(elem) {
+      elem.classList.remove('hide');
+    })
+    
+  }
+}
+
+
+
+if (threadList) {
   window.addEventListener('scroll', async (event) => {
     const documentHeight = document.body.scrollHeight
     const cuttentScroll = window.scrollY + window.innerHeight

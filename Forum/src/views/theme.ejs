@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://localhost/main.css" >
+    <link rel="stylesheet" href="http://localhost/dropdown.css" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="icon" href="http://localhost/globe.png" type="image/png">
+    <title><%= SQLdata.theme[0].theme_name %></title>
+</head>
+<body>
+  
+  <div class="wrapper">
+    <div class="spinner" style="display: none;"></div>
+    <%- include ('./components/header.ejs')%>
+        <div class="nav">
+          <div class="drop-container">
+          <button class="drop-button"></button>
+          <div class="drop-down">
+            <p id="sort-ID">По порядку</p>
+            <p id="sort-ASC">А-Я</p>
+            <p id="sort-DESC">Я-А</p>
+          </div>
+        </div>
+        <input type="text" class="form-control" id="search" placeholder="Поиск">
+      </div>
+    
+    <div class="main" style="padding-top: 10px">
+      <div class="container">
+        <div class="row" style="justify-content: center;">
+          <div class="card" style="width: 60%; min-width: 350px; padding: 0px;">
+            <div class="card-header">
+              <h2><%= SQLdata.theme[0].theme_name %></h2>
+            </div>
+            <% if (username != undefined){ %>
+              <div class="card-body">
+                <input autocomplete="off" type="text" class="form-control create-thread-input" id="thread-input" placeholder="Создать новое обсуждение...">
+                <button class="btn btn-primary create-thread-button" id="create-thread-button">Создать</button>
+              </div>
+            <% } %>
+            </div>
+            <div class="card" style="width:60%; min-width: 350px;">
+              <div class="card-body">
+                <ul class="list-group elastic" id="threadList" style="padding-top: 16px;">
+                <%- include('./components/threadList.ejs') %>
+                </ul>
+              </div>
+            </div>
+          </dv>
+        </div>
+      </div>
+    </div>
+  <%- include ('./components/footer.ejs')%>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script type="module" src="http://localhost/theme.js"></script>
+<script type="module" src="http://localhost/singin.js"></script>
+<script type="module" src="http://localhost/login.js"></script>
+<script type="module" src="http://localhost/user.js"></script>  
+</body>
+</html>
