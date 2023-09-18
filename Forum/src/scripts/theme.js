@@ -61,7 +61,8 @@ document.querySelector('#search').oninput = spinDecorator(async () => {
     });
   if (val != '') {
     searchItems.forEach((elem) => {
-      if (elem.innerText.search(val) == -1) {
+      const elemText=elem.innerText.toLowerCase()
+      if (elemText.search(val.toLowerCase()) == -1) {
         elem.classList.add('hide');
       } else {
         elem.classList.remove('hide');

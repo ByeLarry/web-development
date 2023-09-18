@@ -12,6 +12,7 @@ function renderPage(
   const pagePath: string = path.join(__dirname, "../views/", page);
   ejs.renderFile(pagePath, modData, (err, data) => {
     if (err != null) {
+      console.log(err);
       response.writeHead(404);
       response.write("File not found!\n");
       response.end("Error 404");

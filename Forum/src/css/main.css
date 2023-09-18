@@ -50,6 +50,7 @@ html,body{
     height: 20px;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .msg-h{
@@ -174,4 +175,21 @@ textarea{
   100% {
     transform: rotate(360deg);
   }
+}
+
+.thread-link {
+  display: flex;
+  justify-content: center;
+}
+
+.thread-link a{
+  color: rgb(36, 24, 204);
+  text-decoration: none;
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.thread-link a:hover {
+  color: rgb(255, 2, 2);
 }

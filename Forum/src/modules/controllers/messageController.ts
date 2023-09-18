@@ -31,9 +31,9 @@ function newMsg(
   username: string
 ): void {
   const form = new formidable.IncomingForm();
-  form.parse(request, function (err, fields, files): void {
-    if (err) {
-      console.log(err);
+  form.parse(request, function (error, fields, files): void {
+    if (error) {
+      console.log(error);
     }
     const { threadId, message, test } = fields;
     if (threadId[0] === "") {
@@ -55,13 +55,17 @@ function newMsg(
       const currentPath = fileArray[0].filepath;
       fileDir = `${new Date().getTime()}.png`;
       const newFilePath = `src/uploads/${fileDir}`;
-      fs.rename(currentPath, newFilePath, (err) => {
+      fs.copyFile(currentPath, newFilePath, (err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+      fs.unlink(currentPath, (err) => {
         if (err) {
           console.log(err);
         }
       });
     }
-    console.log("bad");
     sendSQLRequest(
       `insert into messages(content, thread_id, name, image) values ('${message}', ${threadId}, '${username}', '${fileDir}')`
     )

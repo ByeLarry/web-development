@@ -78,7 +78,7 @@ function search(
   const urlRequest = url.parse(request.url!, true);
   const sortType = sorter(urlRequest.query.sort);
   sendSQLRequest(
-    `select * from threads where theme_id =${urlRequest.query.id} and title like '%${urlRequest.query.val}%' ${sortType}`
+    `select * from threads where theme_id=${urlRequest.query.id} and lower(title) LIKE lower('%${urlRequest.query.val}%') ${sortType}`
   )
     .then((threadList) => {
       renderPage(response, "components/threadList.ejs", { threadList });

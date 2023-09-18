@@ -13,17 +13,9 @@
             "files": ["*.ts"],
             "extends": ["@tinkoff/eslint-config/app"],
             "rules": {
-                "promise/no-promise-in-callback": "off"
+                "promise/no-promise-in-callback": "off", 
+                "no-console":"off"
             }   
         }
-        // {
-        //     "files": ["*.js"],
-        //     "extends": ["airbnb-base"],
-        //     "rules": {
-        //         "import/extensions": "off",
-        //         "eqeqeq": "off",
-        //         "no-plusplus": "off"
-        //     }
-        // }
     ]
 }

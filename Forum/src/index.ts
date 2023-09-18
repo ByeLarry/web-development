@@ -23,7 +23,6 @@ const server = http.createServer((request, response) => {
         }
         case "thread": {
           threadRouter(request, response, pathName[3]);
-
           break;
         }
         case "message": {

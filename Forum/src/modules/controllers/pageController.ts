@@ -31,8 +31,29 @@ function thread(
     )
       .then((messages) => {
         sendSQLRequest(`SELECT * FROM threads where id = ${threadId}`)
-          .then((thread) => {
-            renderPage(response, "thread.ejs", { messages, thread }, username);
+          .then((thr) => {
+            sendSQLRequest(
+              `SELECT theme_id FROM threads where id='${threadId}'`
+            )
+              .then((themeId) => {
+                sendSQLRequest(
+                  `SELECT * FROM themes where id='${themeId[0].theme_id}'`
+                )
+                  .then((thm) => {
+                    renderPage(
+                      response,
+                      "thread.ejs",
+                      { messages, thr, thm },
+                      username
+                    );
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  });
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           })
           .catch((err) => {
             console.log(err);
@@ -59,8 +80,8 @@ function theme(
     )
       .then((threadList) => {
         sendSQLRequest(`SELECT * FROM themes where id='${themeId}'`)
-          .then((theme) => {
-            renderPage(response, "theme.ejs", { threadList, theme }, username);
+          .then((thm) => {
+            renderPage(response, "theme.ejs", { threadList, thm }, username);
           })
           .catch((err) => {
             console.log(err);

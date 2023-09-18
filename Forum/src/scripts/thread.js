@@ -24,13 +24,6 @@ function checkString(str) {
   return true;
 }
 
-document.addEventListener('keydown', (event) => {
-  if (event.code === 'Enter') {
-    event.preventDefault();
-    sendMessageButton.click();
-  }
-});
-
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const threadId = urlParams.get('id');
@@ -44,7 +37,8 @@ if (messages) {
     const documentHeight = document.body.scrollHeight;
     const cuttentScroll = window.scrollY + window.innerHeight;
 
-    if (documentHeight - cuttentScroll <= 0 && !flag) {
+    if (documentHeight - cuttentScroll <= 10 && !flag) {
+      console.log(offset)
       flag = true;
       await fetch(
         `api/message/get?id=${threadId}&offset=${offset}&limit=${limit}`,
