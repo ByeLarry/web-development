@@ -183,7 +183,7 @@ textarea{
 }
 
 .thread-link a{
-  color: rgb(36, 24, 204);
+  color: rgb(0, 0, 0);
   text-decoration: none;
   font-size: 2em;
   text-align: center;
@@ -191,5 +191,27 @@ textarea{
 }
 
 .thread-link a:hover {
-  color: rgb(255, 2, 2);
+  color: rgb(6, 86, 223);
+}
+
+.user-threads-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+}
+
+.user-threads {
+  color: black;
+  text-decoration: none;
+  font-size: 1.5em;
+  border: 2px solid silver;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.user-threads:hover {
+  color: rgb(6, 86, 223);
+  border: 2px solid rgb(6, 86, 223);
 }

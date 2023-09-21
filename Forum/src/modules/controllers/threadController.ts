@@ -8,7 +8,8 @@ import testCheck from "../tesAPI";
 
 const create = (
   request: http.IncomingMessage,
-  response: http.ServerResponse
+  response: http.ServerResponse,
+  username: string
 ): void => {
   getPostData(request)
     .then((body) => {
@@ -23,7 +24,7 @@ const create = (
         .then((data) => {
           if (data[0].exists !== true) {
             sendSQLRequest(
-              `INSERT INTO threads (title, theme_id) VALUES ('${threadTitle}', '${threadId}')`
+              `INSERT INTO threads (title, theme_id, user_id) VALUES ('${threadTitle}', '${threadId}', ${username})`
             )
               .then(() => {
                 response.writeHead(200, {

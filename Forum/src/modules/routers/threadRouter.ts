@@ -4,11 +4,12 @@ import * as threadController from "../controllers/threadController";
 function threadRouter(
   request: http.IncomingMessage,
   response: http.ServerResponse,
-  pathName: string
+  pathName: string,
+  username: string
 ): void {
   switch (pathName) {
     case "create": {
-      threadController.create(request, response);
+      threadController.create(request, response, username);
       break;
     }
     case "get": {

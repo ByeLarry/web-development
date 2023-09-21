@@ -173,3 +173,32 @@ if (deleteAccountButton) {
     }
   }));
 }
+
+
+const userThreads = document.querySelector('#userThreads');
+if (userThreads) {
+  userThreads.addEventListener('click', spinDecorator(async (event) => {
+    await fetch('api/user/threads', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    }).then((data) => data.text())
+      .then((response) => {
+        const objects = JSON.parse(response);
+        if (document.querySelectorAll('.user-threads').length > 0) {
+          document.querySelectorAll('.user-threads').forEach(element => {
+            element.remove();
+          });
+        } else {
+          for (let i = 0; i < objects.length; i++) {
+            const thread = document.createElement('a');
+            thread.textContent = objects[i].title;
+            thread.className = 'user-threads';
+            thread.title, thread.href = `http://localhost/thread?id=${objects[i].id}`
+            document.querySelector('.user-threads-div').appendChild(thread);
+          }
+        }
+      });
+  }));
+}

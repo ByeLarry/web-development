@@ -87,5 +87,25 @@ const deleteUser = (
       console.log(err);
     });
 };
-export { updatePassword, deleteUser };
-// post post
+
+function userThreads(
+  request: http.IncomingMessage,
+  response: http.ServerResponse,
+  username: string
+): void {
+  sendSQLRequest(
+    `select * from threads where user_id = (select id from users where name = '${username}')`
+  )
+    .then((data) => {
+      response.writeHead(200, {
+        "Content-Type": "application/json;charset=utf-8",
+      });
+      response.end(JSON.stringify(data));
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export { updatePassword, deleteUser, userThreads };
+// post post post

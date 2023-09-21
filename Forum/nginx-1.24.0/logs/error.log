@@ -829,3 +829,7 @@
 2023/09/18 15:26:52 [error] 4224#12588: *56 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET /thread?id=1 HTTP/1.1", upstream: "http://localhost/thread?id=1", host: "localhost", referrer: "http://localhost/theme?id=1&sort=id"
 2023/09/18 15:26:52 [error] 4224#12588: *56 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://localhost/favicon.ico", host: "localhost", referrer: "http://localhost/thread?id=1"
 2023/09/18 15:29:58 [notice] 11716#8256: signal process started
+2023/09/21 20:47:28 [notice] 10396#3212: signal process started
+2023/09/21 22:14:36 [notice] 5132#11432: signal process started
+2023/09/21 22:16:31 [notice] 9064#8808: signal process started
+2023/09/21 22:26:41 [notice] 9356#7608: signal process started

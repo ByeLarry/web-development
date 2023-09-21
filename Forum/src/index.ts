@@ -22,7 +22,7 @@ const server = http.createServer((request, response) => {
           break;
         }
         case "thread": {
-          threadRouter(request, response, pathName[3]);
+          threadRouter(request, response, pathName[3], decodedUsername);
           break;
         }
         case "message": {

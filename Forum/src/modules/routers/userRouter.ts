@@ -16,6 +16,10 @@ function userRouter(
       userController.deleteUser(request, response, username);
       break;
     }
+    case "threads": {
+      userController.userThreads(request, response, username);
+      break;
+    }
   }
 }
 
